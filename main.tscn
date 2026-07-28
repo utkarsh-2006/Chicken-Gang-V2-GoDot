@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://ccs1l6jhevndf"]
+
+[ext_resource type="Script" uid="uid://mfsrst15rvx1" path="res://scripts/managers/game_manager.gd" id="1_gm"]
+[ext_resource type="PackedScene" path="res://assets/maps/ChickenGangMap.tmx" id="2_map"]
+[ext_resource type="Script" uid="uid://v2pynbq6t0fj" path="res://scripts/managers/level_manager.gd" id="3_lm"]
+[ext_resource type="Script" uid="uid://bfkhj5pp00h6t" path="res://scripts/ui/dynamic_camera.gd" id="4_cam"]
+
+[node name="Main" type="Node2D" unique_id=770574952]
+y_sort_enabled = true
+
+[node name="DynamicCamera" type="Camera2D" parent="." unique_id=1804548575]
+position = Vector2(960, 480)
+script = ExtResource("4_cam")
+
+[node name="Level" type="Node2D" parent="." unique_id=2140039729]
+script = ExtResource("3_lm")
+world_scene = ExtResource("2_map")
+
+[node name="GameManager" type="Node2D" parent="." unique_id=733452693]
+y_sort_enabled = true
+script = ExtResource("1_gm")

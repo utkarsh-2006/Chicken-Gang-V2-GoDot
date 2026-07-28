@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Chaos - Indie Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Press Start 2P', monospace; /* Retro pixel font */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+        #game-container {
+            position: relative;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.8);
+            border: 8px solid #34495e;
+            border-radius: 8px;
+            background-color: #557d36;
+        }
+        canvas {
+            display: block;
+            image-rendering: pixelated; /* Essential for crisp pixel art */
+            background-color: #7ab34d; /* Base grass color */
+        }
+        #ui-layer {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            font-size: 14px;
+            text-shadow: 3px 3px 0 #000;
+            z-index: 10;
+        }
+        .score-board {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .player-score { color: #f1c40f; }
+        .bot1-score { color: #ff9ff3; }
+        .bot2-score { color: #bdc3c7; }
+        
+        #timer-container {
+            text-align: right;
+            color: #fff;
+        }
+        #timer {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-top: 5px;
+        }
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 10px;
+            color: #bdc3c7;
+            line-height: 1.5;
+        }
+        #overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            z-index: 20;
+            text-align: center;
+            padding: 20px;
+        }
+        .title-text {
+            font-size: 32px;
+            color: #f1c40f;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0 #c0392b;
+        }
+        button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-family: 'Press Start 2P', monospace;
+            background-color: #e67e22;
+            color: white;
+            border: 4px solid #d35400;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.1s;
+        }
+        button:hover { 
+            background-color: #f39c12; 
+            transform: scale(1.05);
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="ui-layer">
+            <div class="score-board">
+                <div class="player-score">P1(YOU): <span id="s-p1">0</span></div>
+                <div class="bot1-score">BOT 1 : <span id="s-b1">0</span></div>
+                <div class="bot2-score">BOT 2 : <span id="s-b2">0</span></div>
+            </div>
+            <div id="timer-container">
+                <div>TIME LEFT</div>
+                <div id="timer">3:00</div>
+            </div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        
+        <div id="overlay">
+            <div class="title-text" id="overlay-title">CHICKEN CHAOS</div>
+            <div id="overlay-subtitle" style="font-size: 12px; line-height: 2; color: #ecf0f1;">
+                Survive the farm. Collect worms.<br>
+                Dash into others to steal their worms!<br>
+                Hide in bushes to escape the farmer.
+            </div>
+            <button id="start-btn">START GAME</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        [WASD] or [ARROWS] to Move  |  [SPACE] to Peck/Dash<br>
+        Stay out of the Farmer's sight!
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        // Disable smoothing for crisp pixel art
+        ctx.imageSmoothingEnabled = false;
+
+        const GAME_TIME = 180; // 3 minutes
+        const WORM_SPAWN_RATE = 2000;
+        const WORLD_W = 1200; // Expanded world for camera panning
+        const WORLD_H = 900;
+        
+        let gameTimeLeft = GAME_TIME;
+        let lastTime = 0;
+        let wormTimer = 0;
+        let gameActive = false;
+        
+        // Camera & Juice
+        let camera = { x: 0, y: 0, shake: 0 };
+        let particles = [];
+        let popups = [];
+
+        // Audio Management
+        let audioCtxStarted = false;
+        const synths = {};
+
+        // --- INPUT HANDLING ---
+        const keys = {};
+        window.addEventListener('keydown', e => { keys[e.code] = true; });
+        window.addEventListener('keyup', e => { keys[e.code] = false; });
+
+        function initAudio() {
+            if (audioCtxStarted) return;
+            Tone.start();
+            audioCtxStarted = true;
+
+            // Background Music (Cheerful Farm loop)
+            synths.bgm = new Tone.PolySynth(Tone.Synth, {
+                oscillator: { type: "triangle" },
+                envelope: { attack: 0.05, decay: 0.1, sustain: 0.3, release: 1 }
+            }).toDestination();
+            synths.bgm.volume.value = -12;
+
+            const melody = ["C4", "E4", "G4", "A4", "G4", "E4", "D4", "F4", "A4", "G4", "E4", "C4", "D4", "E4", "C4", null];
+            let step = 0;
+            Tone.Transport.scheduleRepeat((time) => {
+                let note = melody[step % melody.length];
+                if (note) synths.bgm.triggerAttackRelease(note, "8n", time);
+                step++;
+            }, "8n");
+            Tone.Transport.start();
+
+            // Sound Effects
+            synths.peck = new Tone.MembraneSynth().toDestination();
+            synths.peck.volume.value = -5;
+
+            synths.worm = new Tone.FMSynth({
+                modulationIndex: 12.22,
+                envelope: { attack: 0.01, decay: 0.2 },
+                oscillator: { type: "square" }
+            }).toDestination();
+            synths.worm.volume.value = -10;
+
+            synths.stun = new Tone.NoiseSynth({
+                noise: { type: "pink" },
+                envelope: { attack: 0.01, decay: 0.3, sustain: 0 }
+            }).toDestination();
+            synths.stun.volume.value = -8;
+
+            synths.alert = new Tone.Synth({
+                oscillator: { type: "sawtooth" },
+                envelope: { attack: 0.05, decay: 0.1, sustain: 0, release: 0.1 }
+            }).toDestination();
+            synths.alert.volume.value = -15;
+        }
+
+        const lastPlayed = {};
+        function playSound(type) {
+            if (!audioCtxStarted) return;
+            
+            const now = Tone.now();
+            
+            // Throttle sounds to prevent Tone.js scheduling overlap errors 
+            // (prevents crash if multiple hunters spot chickens on the exact same frame)
+            if (lastPlayed[type] && now - lastPlayed[type] < 0.05) {
+                return; 
+            }
+            lastPlayed[type] = now;
+
+            try {
+                if (type === 'peck') synths.peck.triggerAttackRelease("C2", "8n", now);
+                if (type === 'worm') synths.worm.triggerAttackRelease("C5", "16n", now);
+                if (type === 'golden') synths.worm.triggerAttackRelease("E5", "8n", now);
+                if (type === 'stun') synths.stun.triggerAttackRelease("8n", now);
+                if (type === 'alert') synths.alert.triggerAttackRelease("A4", "8n", now);
+            } catch (error) {
+                console.warn("Tone.js scheduling issue safely caught:", error);
+            }
+        }
+
+        // --- UTILITIES ---
+        function distance(x1, y1, x2, y2) { return Math.sqrt((x2-x1)**2 + (y2-y1)**2); }
+        function rectIntersect(r1, r2) {
+            return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top);
+        }
+
+        // Define sprites as arrays of characters mapping to colors
+        const SPRITE_SCALE = 3; // Upscale 16x16 pixels
+
+        function drawPixelArt(ctx, x, y, layout, palette, scale, flipX = false, alpha = 1) {
+            ctx.save();
+            ctx.translate(x, y);
+            if (flipX) ctx.scale(-1, 1);
+            ctx.globalAlpha = alpha;
+            
+            const w = layout[0].length;
+            const h = layout.length;
+            ctx.translate(-(w * scale) / 2, -(h * scale) / 2); // Center Origin
+            
+            for (let row = 0; row < h; row++) {
+                for (let col = 0; col < w; col++) {
+                    const char = layout[row][col];
+                    if (char !== '.' && char !== ' ' && palette[char]) {
+                        ctx.fillStyle = palette[char];
+                        ctx.fillRect(col * scale, row * scale, scale, scale);
+                    }
+                }
+            }
+            ctx.restore();
+        }
+
+        // --- ART ASSETS (Matrices & Palettes) ---
+        const chickenLayouts = {
+            idle: [
+                "....CCC....",
+                "...C.C.C...",
+                "...CCCCC...",
+                "..KWWWWWK..",
+                "..KWKWKWK..",
+                ".KWWWWWWWK.",
+                ".KWWYYYWWK.",
+                "..KWWRWWK..",
+                ".KPPPPPPPK.",
+                "KPPPPPPPPPK",
+                "KPPPPPPPPPK",
+                ".KPPPPPPPK.",
+                "..KPP.PPK..",
+                "...YY.YY..."
+            ],
+            walk1: [
+                "....CCC....",
+                "...C.C.C...",
+                "...CCCCC...",
+                "..KWWWWWK..",
+                "..KWKWKWK..",
+                ".KWWWWWWWK.",
+                ".KWWYYYWWK.",
+                "..KWWRWWK..",
+                ".KPPPPPPPK.",
+                "KPPPPPPPPPK",
+                "KPPPPPPPPPK",
+                ".KPPPPPPPK.",
+                "...KPPPPK..",
+                "....YY....."
+            ],
+            walk2: [
+                "....CCC....",
+                "...C.C.C...",
+                "...CCCCC...",
+                "..KWWWWWK..",
+                "..KWKWKWK..",
+                ".KWWWWWWWK.",
+                ".KWWYYYWWK.",
+                "..KWWRWWK..",
+                ".KPPPPPPPK.",
+                "KPPPPPPPPPK",
+                "KPPPPPPPPPK",
+                ".KPPPPPPPK.",
+                "..KPPPPK...",
+                ".....YY...."
+            ]
+        };
+
+        const hunterLayout = [
+            "....HHHHH....",
+            "...HHHHHHH...",
+            "..HHDDDDDHH..",
+            ".HHDDDDDDDHH.",
+            "..KKSSSSSKK..",
+            "..KSKSKSKSK..",
+            "..KSSSSSSSK..",
+            "...KSSBSSK...",
+            "....BBBBB....",
+            "...PBBBBBP...",
+            "..PPBBBBBPP..",
+            "..PPJBBBJPP..",
+            "...PJJJJJP...",
+            "...JJ...JJ...",
+            "...KK...KK..."
+        ];
+
+        const hunterPalette = {
+            'H': '#e67e22', // Hat outer
+            'D': '#d35400', // Hat inner/band
+            'K': '#000000', // Outline/Eyes
+            'S': '#f1c40f', // Skin
+            'B': '#2980b9', // Overalls
+            'P': '#c0392b', // Plaid Shirt
+            'J': '#34495e'  // Boots
+        };
+
+        const wormLayout = [
+            "......",
+            ".WWWW.",
+            "W..K.W",
+            "W....W",
+            ".WWWW."
+        ];
+        
+        const bushLayout = [
+            "...GGGG...",
+            ".GGDDDDGG.",
+            "GDDDDDDDDG",
+            "GDDDGGDDDG",
+            "GDDGGGGDDG",
+            ".GGDDDDGG.",
+            "...GGGG..."
+        ];
+        const bushPalette = {'G': '#27ae60', 'D': '#2ecc71'};
+        const cornLayout = [
+            "...Y......",
+            "..YYY..G..",
+            ".G.Y.GG...",
+            "..GGGY....",
+            "...G.YYY..",
+            ".....Y.G..",
+            "...GGG...."
+        ];
+        const cornPalette = {'Y': '#f1c40f', 'G': '#27ae60'};
+
+        class Particle {
+            constructor(x, y, color) {
+                this.x = x; this.y = y;
+                this.vx = (Math.random() - 0.5) * 200;
+                this.vy = (Math.random() - 0.5) * 200;
+                this.life = 1.0;
+                this.color = color;
+                this.size = Math.random() * 4 + 2;
+            }
+            update(dt) {
+                this.x += this.vx * dt;
+                this.y += this.vy * dt;
+                this.life -= dt * 2;
+            }
+            draw(ctx) {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = Math.max(0, this.life);
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        class ScorePopup {
+            constructor(x, y, text, color) {
+                this.x = x; this.y = y;
+                this.text = text;
+                this.color = color;
+                this.life = 1.0;
+                this.vy = -50;
+            }
+            update(dt) {
+                this.y += this.vy * dt;
+                this.life -= dt * 1.5;
+            }
+            draw(ctx) {
+                ctx.fillStyle = this.color;
+                ctx.globalAlpha = Math.max(0, this.life);
+                ctx.font = "10px 'Press Start 2P'";
+                ctx.fillText(this.text, this.x, this.y);
+                ctx.globalAlpha = 1;
+            }
+        }
+
+        function spawnFeathers(x, y, color) {
+            for(let i=0; i<10; i++) particles.push(new Particle(x, y, '#ffffff'));
+            for(let i=0; i<5; i++) particles.push(new Particle(x, y, color));
+        }
+
+        class Bush {
+            constructor(x, y, w, h, isCorn=false) {
+                this.x = x; this.y = y; this.w = w; this.h = h;
+                this.isCorn = isCorn;
+                // Generate a grid of sub-sprites to fill the area
+                this.sprites = [];
+                for(let ix = x; ix < x + w; ix += 30) {
+                    for(let iy = y; iy < y + h; iy += 30) {
+                        this.sprites.push({
+                            x: ix + 15 + (Math.random()*10 - 5), 
+                            y: iy + 15 + (Math.random()*10 - 5)
+                        });
+                    }
+                }
+            }
+            draw(ctx) {
+                // Draw a base dark patch
+                ctx.fillStyle = this.isCorn ? '#8e793e' : '#3e6b27';
+                ctx.fillRect(this.x, this.y, this.w, this.h);
+                
+                // Draw decorative pixel sprites over it
+                this.sprites.forEach(s => {
+                    drawPixelArt(ctx, s.x, s.y, this.isCorn ? cornLayout : bushLayout, this.isCorn ? cornPalette : bushPalette, 2);
+                });
+            }
+            contains(x, y) {
+                return (x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.h);
+            }
+        }
+
+        class Worm {
+            constructor(x, y, isGolden) {
+                this.x = x; this.y = y;
+                this.isGolden = isGolden;
+                this.radius = 10;
+                this.value = isGolden ? 5 : 1;
+                this.animOffset = Math.random() * 10;
+            }
+            draw(ctx, time) {
+                const palette = this.isGolden ? {'W':'#f1c40f', 'K':'#e67e22'} : {'W':'#ff9ff3', 'K':'#f368e0'};
+                const yWobble = Math.sin(time * 5 + this.animOffset) * 2;
+                drawPixelArt(ctx, this.x, this.y + yWobble, wormLayout, palette, 2);
+                
+                if (this.isGolden) {
+                    // Golden sparkle
+                    if (Math.random() > 0.9) {
+                        ctx.fillStyle = '#fff';
+                        ctx.fillRect(this.x - 10 + Math.random()*20, this.y - 10 + Math.random()*20, 2, 2);
+                    }
+                }
+            }
+        }
+
+        class Chicken {
+            constructor(id, x, y, palette, isPlayer) {
+                this.id = id;
+                this.x = x; this.y = y;
+                this.radius = 16;
+                this.palette = palette;
+                this.isPlayer = isPlayer;
+                this.speed = 180;
+                this.score = 0;
+                this.isHidden = false;
+                
+                this.isStunned = false;
+                this.stunTimer = 0;
+                this.dashCooldown = 0;
+                this.isDashing = false;
+                this.dashTimer = 0;
+                this.vx = 0; this.vy = 0;
+                this.facingRight = true;
+
+                this.targetWorm = null;
+                
+                // Animation states
+                this.animTimer = 0;
+                this.isMoving = false;
+            }
+
+            update(dt, bushes, worms, hunters, chickens) {
+                if (this.isStunned) {
+                    this.stunTimer -= dt;
+                    if (this.stunTimer <= 0) this.isStunned = false;
+                    return;
+                }
+
+                if (this.dashCooldown > 0) this.dashCooldown -= dt;
+                
+                let dx = 0; let dy = 0;
+
+                if (this.isPlayer) {
+                    if (keys['ArrowUp'] || keys['KeyW']) dy = -1;
+                    if (keys['ArrowDown'] || keys['KeyS']) dy = 1;
+                    if (keys['ArrowLeft'] || keys['KeyA']) dx = -1;
+                    if (keys['ArrowRight'] || keys['KeyD']) dx = 1;
+
+                    if (keys['Space'] && this.dashCooldown <= 0 && !this.isDashing) {
+                        this.isDashing = true;
+                        this.dashTimer = 0.25;
+                        this.dashCooldown = 3.0;
+                        playSound('peck');
+                        camera.shake = 5;
+                    }
+                } else {
+                    // Bot AI Logic
+                    let nearestHunter = null;
+                    let hunterDist = Infinity;
+                    hunters.forEach(h => {
+                        let d = distance(this.x, this.y, h.x, h.y);
+                        if (d < 250) {
+                            nearestHunter = h;
+                            hunterDist = d;
+                        }
+                    });
+
+                    if (nearestHunter && !this.isHidden) {
+                        // Flee
+                        let angle = Math.atan2(this.y - nearestHunter.y, this.x - nearestHunter.x);
+                        dx = Math.cos(angle);
+                        dy = Math.sin(angle);
+                    } else {
+                        // Forage
+                        if (!this.targetWorm || !worms.includes(this.targetWorm)) {
+                            let closest = Infinity;
+                            worms.forEach(w => {
+                                let d = distance(this.x, this.y, w.x, w.y);
+                                if (d < closest) {
+                                    closest = d;
+                                    this.targetWorm = w;
+                                }
+                            });
+                        }
+                        if (this.targetWorm) {
+                            let angle = Math.atan2(this.targetWorm.y - this.y, this.targetWorm.x - this.x);
+                            dx = Math.cos(angle);
+                            dy = Math.sin(angle);
+                        }
+                    }
+                }
+
+                this.isMoving = (dx !== 0 || dy !== 0);
+                if (this.isMoving) {
+                    const len = Math.sqrt(dx*dx + dy*dy);
+                    dx /= len; dy /= len;
+                    this.vx = dx; this.vy = dy;
+                    if (dx < 0) this.facingRight = false;
+                    else if (dx > 0) this.facingRight = true;
+                    
+                    this.animTimer += dt * 10;
+                } else {
+                    this.animTimer = 0;
+                }
+
+                let currentSpeed = this.speed;
+                if (this.isDashing) {
+                    this.dashTimer -= dt;
+                    currentSpeed = this.speed * 3.5;
+                    // Leave dust trail
+                    particles.push(new Particle(this.x, this.y + 10, '#bdc3c7'));
+                    if (this.dashTimer <= 0) this.isDashing = false;
+                }
+
+                if (this.isHidden && !this.isDashing) currentSpeed *= 0.6; // Slower in bushes
+
+                this.x += dx * currentSpeed * dt;
+                this.y += dy * currentSpeed * dt;
+
+                // World Boundaries
+                this.x = Math.max(this.radius, Math.min(WORLD_W - this.radius, this.x));
+                this.y = Math.max(this.radius, Math.min(WORLD_H - this.radius, this.y));
+
+                // Hiding Logic
+                this.isHidden = false;
+                for (let bush of bushes) {
+                    if (bush.contains(this.x, this.y)) {
+                        this.isHidden = true;
+                        break;
+                    }
+                }
+
+                // Worm Collection
+                for (let i = worms.length - 1; i >= 0; i--) {
+                    if (distance(this.x, this.y, worms[i].x, worms[i].y) < this.radius + worms[i].radius) {
+                        this.score += worms[i].value;
+                        popups.push(new ScorePopup(this.x, this.y - 20, `+${worms[i].value}`, worms[i].isGolden ? '#f1c40f' : '#fff'));
+                        playSound(worms[i].isGolden ? 'golden' : 'worm');
+                        worms.splice(i, 1);
+                        this.targetWorm = null;
+                        updateScoreUI();
+                    }
+                }
+
+                // Collision/Sabotage
+                if (this.isDashing) {
+                    chickens.forEach(other => {
+                        if (other.id !== this.id && !other.isStunned) {
+                            if (distance(this.x, this.y, other.x, other.y) < this.radius + other.radius + 10) {
+                                other.isStunned = true;
+                                other.stunTimer = 2.0;
+                                playSound('stun');
+                                spawnFeathers(other.x, other.y, other.palette['P']);
+                                camera.shake = 10;
+                                
+                                // Drop worms
+                                if (other.score > 0) {
+                                    other.score = Math.max(0, other.score - 2);
+                                    worms.push(new Worm(other.x + 30, other.y + 30, false));
+                                    worms.push(new Worm(other.x - 30, other.y - 30, false));
+                                    popups.push(new ScorePopup(other.x, other.y - 20, "-2", "#e74c3c"));
+                                    updateScoreUI();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            draw(ctx) {
+                let layout = chickenLayouts.idle;
+                if (this.isMoving) {
+                    layout = (Math.floor(this.animTimer) % 2 === 0) ? chickenLayouts.walk1 : chickenLayouts.walk2;
+                }
+                
+                // Dash squash/stretch effect
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                if (this.isDashing) {
+                    let angle = Math.atan2(this.vy, this.vx);
+                    ctx.rotate(angle);
+                    ctx.scale(1.4, 0.7);
+                    ctx.rotate(-angle);
+                }
+                
+                // Opacity for hiding
+                let alpha = this.isHidden ? 0.4 : 1.0;
+                
+                drawPixelArt(ctx, 0, 0, layout, this.palette, SPRITE_SCALE, !this.facingRight, alpha);
+                
+                // Stun effect (spinning stars)
+                if (this.isStunned) {
+                    ctx.fillStyle = '#f1c40f';
+                    ctx.font = "16px Arial";
+                    const t = Date.now() / 150;
+                    ctx.fillText("⭐", Math.cos(t)*20 - 8, Math.sin(t)*10 - 25);
+                    ctx.fillText("⭐", Math.cos(t+Math.PI)*20 - 8, Math.sin(t+Math.PI)*10 - 25);
+                }
+
+                // Dash cooldown UI (only for player)
+                if (this.isPlayer && this.dashCooldown > 0 && !this.isStunned) {
+                    ctx.fillStyle = '#000';
+                    ctx.fillRect(-15, 25, 30, 4);
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(-15, 25, 30 * (1 - (this.dashCooldown/3)), 4);
+                }
+                ctx.restore();
+            }
+        }
+
+        class Hunter {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.size = 24;
+                this.speed = 100;
+                this.chaseSpeed = 190;
+                this.visionRadius = 220;
+                this.state = 'PATROL';
+                this.target = null;
+                
+                this.tx = Math.random() * WORLD_W;
+                this.ty = Math.random() * WORLD_H;
+                
+                this.facingRight = true;
+                this.animTimer = 0;
+            }
+
+            update(dt, chickens) {
+                let dx = 0; let dy = 0;
+                let currentSpeed = this.speed;
+
+                // Vision Check
+                let closestVisible = null;
+                let closestDist = this.visionRadius;
+
+                for (let c of chickens) {
+                    if (!c.isHidden && !c.isStunned) {
+                        let d = distance(this.x, this.y, c.x, c.y);
+                        if (d < closestDist) {
+                            closestDist = d;
+                            closestVisible = c;
+                        }
+                    }
+                }
+
+                if (closestVisible) {
+                    if (this.state !== 'CHASE') {
+                        playSound('alert');
+                        popups.push(new ScorePopup(this.x, this.y - 30, "!", "#e74c3c"));
+                    }
+                    this.state = 'CHASE';
+                    this.target = closestVisible;
+                } else if (this.state === 'CHASE') {
+                    this.state = 'PATROL';
+                    this.target = null;
+                    this.tx = Math.random() * WORLD_W;
+                    this.ty = Math.random() * WORLD_H;
+                }
+
+                if (this.state === 'PATROL') {
+                    if (distance(this.x, this.y, this.tx, this.ty) < 10) {
+                        this.tx = Math.random() * (WORLD_W - 100) + 50;
+                        this.ty = Math.random() * (WORLD_H - 100) + 50;
+                    }
+                    let angle = Math.atan2(this.ty - this.y, this.tx - this.x);
+                    dx = Math.cos(angle);
+                    dy = Math.sin(angle);
+                } else if (this.state === 'CHASE' && this.target) {
+                    currentSpeed = this.chaseSpeed;
+                    let angle = Math.atan2(this.target.y - this.y, this.target.x - this.x);
+                    dx = Math.cos(angle);
+                    dy = Math.sin(angle);
+
+                    // Catch
+                    if (distance(this.x, this.y, this.target.x, this.target.y) < this.size + this.target.radius) {
+                        this.target.score = Math.max(0, this.target.score - 5);
+                        this.target.isStunned = true;
+                        this.target.stunTimer = 2.5;
+                        playSound('stun');
+                        camera.shake = 15;
+                        spawnFeathers(this.target.x, this.target.y, this.target.palette['P']);
+                        popups.push(new ScorePopup(this.target.x, this.target.y - 20, "-5", "#e74c3c"));
+                        updateScoreUI();
+                        
+                        // Bounce away
+                        this.tx = Math.max(50, Math.min(WORLD_W-50, this.x - dx * 300));
+                        this.ty = Math.max(50, Math.min(WORLD_H-50, this.y - dy * 300));
+                        this.state = 'PATROL';
+                        this.target = null;
+                    }
+                }
+
+                if (dx !== 0 || dy !== 0) {
+                    if (dx < 0) this.facingRight = false;
+                    else if (dx > 0) this.facingRight = true;
+                    this.animTimer += dt * 10;
+                }
+
+                this.x += dx * currentSpeed * dt;
+                this.y += dy * currentSpeed * dt;
+                
+                this.x = Math.max(this.size, Math.min(WORLD_W - this.size, this.x));
+                this.y = Math.max(this.size, Math.min(WORLD_H - this.size, this.y));
+            }
+
+            draw(ctx) {
+                // Vision Cone/Radius
+                ctx.fillStyle = this.state === 'CHASE' ? 'rgba(231, 76, 60, 0.2)' : 'rgba(241, 196, 15, 0.1)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.visionRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Draw Farmer Sprite
+                let yWobble = Math.sin(this.animTimer) * 3;
+                drawPixelArt(ctx, this.x, this.y - 10 + yWobble, hunterLayout, hunterPalette, SPRITE_SCALE, !this.facingRight);
+                
+                if (this.state === 'CHASE') {
+                    ctx.fillStyle = '#e74c3c';
+                    ctx.font = "20px 'Press Start 2P'";
+                    ctx.fillText("!", this.x - 10, this.y - 40);
+                }
+            }
+        }
+
+        const bushes = [
+            new Bush(100, 100, 200, 150),
+            new Bush(850, 150, 200, 200, true), // Cornfield
+            new Bush(200, 600, 250, 150),
+            new Bush(700, 550, 180, 180),
+            new Bush(450, 300, 150, 150, true), // Center corn
+            new Bush(900, 700, 200, 150)
+        ];
+        const worms = [];
+        const chickens = [
+            new Chicken('P1', 600, 450, {'K': '#000', 'W': '#fff', 'C': '#e74c3c', 'R': '#c0392b', 'Y': '#f39c12', 'P': '#f1c40f'}, true),   // Yellow
+            new Chicken('B1', 500, 450, {'K': '#000', 'W': '#fff', 'C': '#3498db', 'R': '#2980b9', 'Y': '#f39c12', 'P': '#ff9ff3'}, false),  // Pink/Blue
+            new Chicken('B2', 700, 450, {'K': '#000', 'W': '#fff', 'C': '#34495e', 'R': '#2c3e50', 'Y': '#f39c12', 'P': '#bdc3c7'}, false)   // Grey
+        ];
+        const hunters = [
+            new Hunter(100, 100)
+        ];
+
+        function spawnWorm() {
+            if (worms.length < 25) {
+                let x = Math.random() * (WORLD_W - 80) + 40;
+                let y = Math.random() * (WORLD_H - 80) + 40;
+                let isGolden = Math.random() > 0.9;
+                worms.push(new Worm(x, y, isGolden));
+            }
+        }
+        for(let i=0; i<15; i++) spawnWorm();
+
+        // --- UI & LOOP ---
+        function updateScoreUI() {
+            document.getElementById('s-p1').innerText = chickens[0].score;
+            document.getElementById('s-b1').innerText = chickens[1].score;
+            document.getElementById('s-b2').innerText = chickens[2].score;
+        }
+
+        function formatTime(seconds) {
+            let m = Math.floor(seconds / 60);
+            let s = Math.floor(seconds % 60);
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function endGame() {
+            gameActive = false;
+            let winner = chickens[0];
+            for (let c of chickens) {
+                if (c.score > winner.score) winner = c;
+            }
+            
+            let winText = winner.isPlayer ? "YOU WIN!" : `${winner.id} WINS!`;
+            if (chickens.every(c => c.score === winner.score)) winText = "IT'S A TIE!";
+
+            const goDiv = document.getElementById('overlay');
+            document.getElementById('overlay-title').innerText = winText;
+            document.getElementById('overlay-subtitle').innerText = "Final Score: " + winner.score;
+            document.getElementById('start-btn').innerText = "PLAY AGAIN";
+            goDiv.style.display = 'flex';
+            
+            if (audioCtxStarted) Tone.Transport.stop();
+        }
+
+        function drawBackground(ctx) {
+            // Dirt paths
+            ctx.fillStyle = '#a47c48';
+            ctx.fillRect(0, WORLD_H/2 - 40, WORLD_W, 80);
+            ctx.fillRect(WORLD_W/2 - 40, 0, 80, WORLD_H);
+            
+            // Pond
+            ctx.fillStyle = '#3498db';
+            ctx.beginPath();
+            ctx.ellipse(WORLD_W - 200, 200, 150, 100, 0, 0, Math.PI*2);
+            ctx.fill();
+            ctx.strokeStyle = '#2980b9';
+            ctx.lineWidth = 10;
+            ctx.stroke();
+        }
+
+        function gameLoop(timestamp) {
+            if (!gameActive) {
+                requestAnimationFrame(gameLoop);
+                return;
+            }
+
+            let dt = (timestamp - lastTime) / 1000;
+            if (dt > 0.1) dt = 0.1;
+            lastTime = timestamp;
+            const timeStr = timestamp / 1000;
+
+            // Timer logic
+            gameTimeLeft -= dt;
+            document.getElementById('timer').innerText = formatTime(Math.max(0, gameTimeLeft));
+            if (gameTimeLeft <= 0) {
+                endGame();
+                return;
+            }
+
+            wormTimer += dt * 1000;
+            if (wormTimer > WORM_SPAWN_RATE) {
+                spawnWorm();
+                wormTimer = 0;
+                // Escalating difficulty
+                if (gameTimeLeft < 90 && hunters.length < 2) {
+                    hunters.push(new Hunter(WORLD_W - 100, WORLD_H - 100));
+                    popups.push(new ScorePopup(WORLD_W/2, WORLD_H/2, "A NEW HUNTER ARRIVED!", "#e74c3c"));
+                }
+            }
+
+            // Update Entities
+            chickens.forEach(c => c.update(dt, bushes, worms, hunters, chickens));
+            hunters.forEach(h => h.update(dt, chickens));
+            
+            // Particles & Popups
+            particles.forEach(p => p.update(dt));
+            particles = particles.filter(p => p.life > 0);
+            popups.forEach(p => p.update(dt));
+            popups = popups.filter(p => p.life > 0);
+
+            // Camera Tracking & Shake
+            let targetCamX = chickens[0].x - canvas.width / 2;
+            let targetCamY = chickens[0].y - canvas.height / 2;
+            
+            // Clamp camera to world bounds
+            targetCamX = Math.max(0, Math.min(targetCamX, WORLD_W - canvas.width));
+            targetCamY = Math.max(0, Math.min(targetCamY, WORLD_H - canvas.height));
+            
+            camera.x += (targetCamX - camera.x) * 0.1;
+            camera.y += (targetCamY - camera.y) * 0.1;
+
+            if (camera.shake > 0) {
+                camera.x += (Math.random() - 0.5) * camera.shake;
+                camera.y += (Math.random() - 0.5) * camera.shake;
+                camera.shake -= dt * 30;
+            }
+
+            // --- DRAW PHASE ---
+            ctx.fillStyle = '#7ab34d';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.save();
+            ctx.translate(-Math.floor(camera.x), -Math.floor(camera.y));
+
+            drawBackground(ctx);
+            bushes.forEach(b => b.draw(ctx));
+            worms.forEach(w => w.draw(ctx, timeStr));
+            
+            // Y-Sorting for 2.5D depth illusion
+            let renderList = [...chickens, ...hunters].sort((a, b) => a.y - b.y);
+            renderList.forEach(e => e.draw(ctx));
+
+            particles.forEach(p => p.draw(ctx));
+            popups.forEach(p => p.draw(ctx));
+
+            // World Border
+            ctx.strokeStyle = '#2c3e50';
+            ctx.lineWidth = 10;
+            ctx.strokeRect(0, 0, WORLD_W, WORLD_H);
+
+            ctx.restore();
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Setup Start Button
+        document.getElementById('start-btn').addEventListener('click', () => {
+            initAudio();
+            document.getElementById('overlay').style.display = 'none';
+            
+            // Reset state
+            gameTimeLeft = GAME_TIME;
+            chickens.forEach(c => { c.score = 0; c.isStunned = false; });
+            hunters.splice(1); // Remove extra hunters
+            updateScoreUI();
+            
+            if (audioCtxStarted) Tone.Transport.start();
+            
+            gameActive = true;
+            lastTime = performance.now();
+        });
+
+        // Initialize Loop
+        requestAnimationFrame((timestamp) => {
+            lastTime = timestamp;
+            gameLoop(timestamp);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Chaos - Prototype</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #game-container {
+            position: relative;
+        }
+        canvas {
+            background-color: #557d36; /* Farm grass green */
+            border: 4px solid #34495e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        #ui-layer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            font-weight: bold;
+            font-size: 20px;
+            text-shadow: 2px 2px 0 #000;
+        }
+        .score-board {
+            display: flex;
+            gap: 20px;
+        }
+        .player-score { color: #f1c40f; }
+        .bot1-score { color: #3498db; }
+        .bot2-score { color: #e74c3c; }
+        #timer {
+            color: #ecf0f1;
+        }
+        .controls {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        #game-over {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover { background-color: #d35400; }
+    </style>
+</head>
+<body>
+
+    <div id="game-container">
+        <div id="ui-layer">
+            <div class="score-board">
+                <div class="player-score">P1 (You): <span id="s-p1">0</span></div>
+                <div class="bot1-score">Bot 1: <span id="s-b1">0</span></div>
+                <div class="bot2-score">Bot 2: <span id="s-b2">0</span></div>
+            </div>
+            <div id="timer">3:00</div>
+        </div>
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="game-over">
+            <div id="winner-text">Time's Up!</div>
+            <button onclick="location.reload()">Play Again</button>
+        </div>
+    </div>
+
+    <div class="controls">
+        <strong>Controls:</strong> Arrow Keys or W/A/S/D to move. Space to Peck (Dash/Stun). Hide in dark green bushes!
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // --- GAME ENGINE CONSTANTS ---
+        const GAME_TIME = 180; // 3 minutes in seconds
+        const WORM_SPAWN_RATE = 2000; // ms
+        let gameTimeLeft = GAME_TIME;
+        let lastTime = 0;
+        let wormTimer = 0;
+        let gameActive = true;
+
+        // --- INPUT HANDLING ---
+        const keys = {};
+        window.addEventListener('keydown', e => { keys[e.code] = true; });
+        window.addEventListener('keyup', e => { keys[e.code] = false; });
+
+        // --- UTILITIES ---
+        function distance(x1, y1, x2, y2) {
+            return Math.sqrt((x2-x1)**2 + (y2-y1)**2);
+        }
+        function rectIntersect(r1, r2) {
+            return !(r2.left > r1.right || r2.right < r1.left || r2.top > r1.bottom || r2.bottom < r1.top);
+        }
+
+        // --- ENTITIES ---
+
+        class Bush {
+            constructor(x, y, w, h) {
+                this.x = x; this.y = y; this.w = w; this.h = h;
+            }
+            draw(ctx) {
+                ctx.fillStyle = 'rgba(39, 92, 43, 0.7)'; // Dark translucent green
+                ctx.fillRect(this.x, this.y, this.w, this.h);
+            }
+            contains(x, y, radius) {
+                return (x > this.x && x < this.x + this.w && y > this.y && y < this.y + this.h);
+            }
+        }
+
+        class Worm {
+            constructor(x, y, isGolden) {
+                this.x = x; this.y = y;
+                this.isGolden = isGolden;
+                this.radius = 4;
+                this.value = isGolden ? 5 : 1;
+            }
+            draw(ctx) {
+                ctx.fillStyle = this.isGolden ? '#f1c40f' : '#ff9ff3';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        class Chicken {
+            constructor(id, x, y, color, isPlayer) {
+                this.id = id;
+                this.x = x; this.y = y;
+                this.radius = 12;
+                this.color = color;
+                this.isPlayer = isPlayer;
+                this.speed = 150; // px per second
+                this.score = 0;
+                this.isHidden = false;
+                
+                // Sabotage mechanics
+                this.isStunned = false;
+                this.stunTimer = 0;
+                this.dashCooldown = 0;
+                this.isDashing = false;
+                this.dashTimer = 0;
+                this.vx = 0; this.vy = 0;
+
+                // AI properties
+                this.targetWorm = null;
+            }
+
+            update(dt, bushes, worms, hunters, chickens) {
+                if (this.isStunned) {
+                    this.stunTimer -= dt;
+                    if (this.stunTimer <= 0) this.isStunned = false;
+                    return;
+                }
+
+                if (this.dashCooldown > 0) this.dashCooldown -= dt;
+                
+                let dx = 0; let dy = 0;
+
+                if (this.isPlayer) {
+                    if (keys['ArrowUp'] || keys['KeyW']) dy = -1;
+                    if (keys['ArrowDown'] || keys['KeyS']) dy = 1;
+                    if (keys['ArrowLeft'] || keys['KeyA']) dx = -1;
+                    if (keys['ArrowRight'] || keys['KeyD']) dx = 1;
+
+                    // Peck / Dash
+                    if (keys['Space'] && this.dashCooldown <= 0 && !this.isDashing) {
+                        this.isDashing = true;
+                        this.dashTimer = 0.2;
+                        this.dashCooldown = 3.0; // 3 sec cooldown
+                    }
+                } else {
+                    // Bot AI Logic
+                    // 1. Flee hunter if visible
+                    let nearestHunter = null;
+                    let hunterDist = Infinity;
+                    hunters.forEach(h => {
+                        let d = distance(this.x, this.y, h.x, h.y);
+                        if (d < 150) {
+                            nearestHunter = h;
+                            hunterDist = d;
+                        }
+                    });
+
+                    if (nearestHunter && !this.isHidden) {
+                        // Run away!
+                        let angle = Math.atan2(this.y - nearestHunter.y, this.x - nearestHunter.x);
+                        dx = Math.cos(angle);
+                        dy = Math.sin(angle);
+                    } else {
+                        // 2. Find nearest worm
+                        if (!this.targetWorm || !worms.includes(this.targetWorm)) {
+                            let closest = Infinity;
+                            worms.forEach(w => {
+                                let d = distance(this.x, this.y, w.x, w.y);
+                                if (d < closest) {
+                                    closest = d;
+                                    this.targetWorm = w;
+                                }
+                            });
+                        }
+                        if (this.targetWorm) {
+                            let angle = Math.atan2(this.targetWorm.y - this.y, this.targetWorm.x - this.x);
+                            dx = Math.cos(angle);
+                            dy = Math.sin(angle);
+                        }
+                    }
+                }
+
+                // Normalize movement vector
+                if (dx !== 0 || dy !== 0) {
+                    const len = Math.sqrt(dx*dx + dy*dy);
+                    dx /= len; dy /= len;
+                    this.vx = dx; this.vy = dy; // save facing direction
+                }
+
+                // Apply movement
+                let currentSpeed = this.speed;
+                if (this.isDashing) {
+                    this.dashTimer -= dt;
+                    currentSpeed = this.speed * 3;
+                    if (this.dashTimer <= 0) this.isDashing = false;
+                }
+
+                // Slow down slightly in bushes
+                if (this.isHidden && !this.isDashing) currentSpeed *= 0.7;
+
+                this.x += dx * currentSpeed * dt;
+                this.y += dy * currentSpeed * dt;
+
+                // Boundaries
+                this.x = Math.max(this.radius, Math.min(canvas.width - this.radius, this.x));
+                this.y = Math.max(this.radius, Math.min(canvas.height - this.radius, this.y));
+
+                // Check hiding
+                this.isHidden = false;
+                for (let bush of bushes) {
+                    if (bush.contains(this.x, this.y)) {
+                        this.isHidden = true;
+                        break;
+                    }
+                }
+
+                // Check worm collection
+                for (let i = worms.length - 1; i >= 0; i--) {
+                    if (distance(this.x, this.y, worms[i].x, worms[i].y) < this.radius + worms[i].radius) {
+                        this.score += worms[i].value;
+                        worms.splice(i, 1);
+                        this.targetWorm = null; // reset bot target
+                        updateScoreUI();
+                    }
+                }
+
+                // Check collisions (Sabotage/Pecking)
+                if (this.isDashing) {
+                    chickens.forEach(other => {
+                        if (other.id !== this.id && !other.isStunned) {
+                            if (distance(this.x, this.y, other.x, other.y) < this.radius + other.radius + 5) {
+                                other.isStunned = true;
+                                other.stunTimer = 1.5; // Stun for 1.5s
+                                // Drop a worm if they have points
+                                if (other.score > 0) {
+                                    other.score = Math.max(0, other.score - 2);
+                                    worms.push(new Worm(other.x + 20, other.y + 20, false));
+                                    updateScoreUI();
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+
+            draw(ctx) {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                
+                // Fade if hidden
+                if (this.isHidden) ctx.globalAlpha = 0.5;
+
+                // Body
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(0, 0, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Beak
+                ctx.fillStyle = '#e67e22';
+                let angle = Math.atan2(this.vy, this.vx);
+                if (this.vx === 0 && this.vy === 0) angle = Math.PI / 2; // face down default
+                ctx.rotate(angle);
+                ctx.beginPath();
+                ctx.moveTo(this.radius, 0);
+                ctx.lineTo(this.radius + 6, -4);
+                ctx.lineTo(this.radius + 6, 4);
+                ctx.fill();
+
+                ctx.restore();
+
+                // Stun / Dash Indicators
+                if (this.isStunned) {
+                    ctx.fillStyle = '#f1c40f';
+                    ctx.font = "12px Arial";
+                    ctx.fillText("⭐", this.x - 8, this.y - 15);
+                }
+                if (this.dashCooldown > 0 && this.isPlayer && !this.isStunned) {
+                    // small cooldown bar
+                    ctx.fillStyle = 'black';
+                    ctx.fillRect(this.x - 10, this.y + 15, 20, 4);
+                    ctx.fillStyle = 'white';
+                    ctx.fillRect(this.x - 10, this.y + 15, 20 * (1 - (this.dashCooldown/3)), 4);
+                }
+            }
+        }
+
+        class Hunter {
+            constructor(x, y) {
+                this.x = x; this.y = y;
+                this.size = 24;
+                this.speed = 80;
+                this.chaseSpeed = 160;
+                this.visionRadius = 180;
+                this.state = 'PATROL'; // PATROL, CHASE
+                this.target = null;
+                
+                // Patrol waypoints
+                this.tx = Math.random() * canvas.width;
+                this.ty = Math.random() * canvas.height;
+            }
+
+            update(dt, chickens) {
+                let dx = 0; let dy = 0;
+                let currentSpeed = this.speed;
+
+                // Check vision for visible chickens
+                let closestVisible = null;
+                let closestDist = this.visionRadius;
+
+                for (let c of chickens) {
+                    if (!c.isHidden && !c.isStunned) { // Hunters ignore stunned birds? Or easy prey. Let's make them chase alive ones.
+                        let d = distance(this.x, this.y, c.x, c.y);
+                        if (d < closestDist) {
+                            closestDist = d;
+                            closestVisible = c;
+                        }
+                    }
+                }
+
+                if (closestVisible) {
+                    this.state = 'CHASE';
+                    this.target = closestVisible;
+                } else if (this.state === 'CHASE') {
+                    // Lost sight
+                    this.state = 'PATROL';
+                    this.target = null;
+                    this.tx = Math.random() * canvas.width;
+                    this.ty = Math.random() * canvas.height;
+                }
+
+                if (this.state === 'PATROL') {
+                    if (distance(this.x, this.y, this.tx, this.ty) < 5) {
+                        this.tx = Math.random() * (canvas.width - 40) + 20;
+                        this.ty = Math.random() * (canvas.height - 40) + 20;
+                    }
+                    let angle = Math.atan2(this.ty - this.y, this.tx - this.x);
+                    dx = Math.cos(angle);
+                    dy = Math.sin(angle);
+                } else if (this.state === 'CHASE' && this.target) {
+                    currentSpeed = this.chaseSpeed;
+                    let angle = Math.atan2(this.target.y - this.y, this.target.x - this.x);
+                    dx = Math.cos(angle);
+                    dy = Math.sin(angle);
+
+                    // Catching the chicken
+                    if (distance(this.x, this.y, this.target.x, this.target.y) < this.size/2 + this.target.radius) {
+                        // Penalty!
+                        this.target.score = Math.max(0, this.target.score - 5); // Lose 5 worms
+                        this.target.isStunned = true;
+                        this.target.stunTimer = 2.0;
+                        updateScoreUI();
+                        
+                        // Bounce hunter away
+                        this.tx = this.x - dx * 150;
+                        this.ty = this.y - dy * 150;
+                        this.state = 'PATROL';
+                        this.target = null;
+                    }
+                }
+
+                this.x += dx * currentSpeed * dt;
+                this.y += dy * currentSpeed * dt;
+                
+                this.x = Math.max(this.size/2, Math.min(canvas.width - this.size/2, this.x));
+                this.y = Math.max(this.size/2, Math.min(canvas.height - this.size/2, this.y));
+            }
+
+            draw(ctx) {
+                // Vision Cone/Radius
+                ctx.fillStyle = 'rgba(192, 57, 43, 0.1)';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.visionRadius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Body
+                ctx.fillStyle = '#c0392b'; // Dark red
+                ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
+                
+                // Face / Hat
+                ctx.fillStyle = '#2c3e50';
+                ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, 8);
+            }
+        }
+
+        // --- GAME STATE ---
+        const bushes = [
+            new Bush(100, 100, 150, 100),
+            new Bush(550, 150, 120, 180),
+            new Bush(200, 400, 200, 120),
+            new Bush(600, 450, 100, 100)
+        ];
+        const worms = [];
+        const chickens = [
+            new Chicken('P1', 400, 300, '#f1c40f', true),   // Player (Yellow)
+            new Chicken('B1', 350, 300, '#3498db', false),  // Bot 1 (Blue)
+            new Chicken('B2', 450, 300, '#9b59b6', false)   // Bot 2 (Purple)
+        ];
+        const hunters = [
+            new Hunter(50, 50)
+        ];
+
+        // --- SPAWN LOGIC ---
+        function spawnWorm() {
+            if (worms.length < 20) {
+                let x = Math.random() * (canvas.width - 40) + 20;
+                let y = Math.random() * (canvas.height - 40) + 20;
+                let isGolden = Math.random() > 0.9; // 10% chance
+                worms.push(new Worm(x, y, isGolden));
+            }
+        }
+
+        // Initial worms
+        for(let i=0; i<10; i++) spawnWorm();
+
+        // --- UI UPDATES ---
+        function updateScoreUI() {
+            document.getElementById('s-p1').innerText = chickens[0].score;
+            document.getElementById('s-b1').innerText = chickens[1].score;
+            document.getElementById('s-b2').innerText = chickens[2].score;
+        }
+
+        function formatTime(seconds) {
+            let m = Math.floor(seconds / 60);
+            let s = Math.floor(seconds % 60);
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function endGame() {
+            gameActive = false;
+            let winner = chickens[0];
+            for (let c of chickens) {
+                if (c.score > winner.score) winner = c;
+            }
+            
+            let winText = winner.isPlayer ? "You Win!" : `${winner.id} Wins!`;
+            if (chickens.every(c => c.score === winner.score)) winText = "It's a Tie!";
+
+            const goDiv = document.getElementById('game-over');
+            document.getElementById('winner-text').innerText = winText;
+            goDiv.style.display = 'flex';
+        }
+
+        // --- MAIN LOOP ---
+        function gameLoop(timestamp) {
+            if (!gameActive) return;
+
+            let dt = (timestamp - lastTime) / 1000;
+            if (dt > 0.1) dt = 0.1; // Cap dt for tab switching
+            lastTime = timestamp;
+
+            // Timers
+            gameTimeLeft -= dt;
+            document.getElementById('timer').innerText = formatTime(Math.max(0, gameTimeLeft));
+            if (gameTimeLeft <= 0) {
+                endGame();
+                return;
+            }
+
+            wormTimer += dt * 1000;
+            if (wormTimer > WORM_SPAWN_RATE) {
+                spawnWorm();
+                wormTimer = 0;
+                // As time goes down, maybe spawn a second hunter!
+                if (gameTimeLeft < 90 && hunters.length < 2) {
+                    hunters.push(new Hunter(canvas.width - 50, canvas.height - 50));
+                }
+            }
+
+            // Update
+            chickens.forEach(c => c.update(dt, bushes, worms, hunters, chickens));
+            hunters.forEach(h => h.update(dt, chickens));
+
+            // Draw
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw environment
+            bushes.forEach(b => b.draw(ctx));
+            
+            // Draw items/entities
+            worms.forEach(w => w.draw(ctx));
+            chickens.forEach(c => c.draw(ctx));
+            hunters.forEach(h => h.draw(ctx));
+
+            requestAnimationFrame(gameLoop);
+        }
+
+        // Start
+        requestAnimationFrame((timestamp) => {
+            lastTime = timestamp;
+            gameLoop(timestamp);
+        });
+
+    </script>
+</body>
+</html>

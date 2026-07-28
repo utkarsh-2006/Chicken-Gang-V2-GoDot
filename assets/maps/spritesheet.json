@@ -1,0 +1,176 @@
+{
+    "frames": {
+        "Beach_Tile.png": {
+            "frame": {
+                "x": 1,
+                "y": 1,
+                "w": 80,
+                "h": 48
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 80,
+                "h": 48
+            },
+            "sourceSize": {
+                "w": 80,
+                "h": 48
+            }
+        },
+        "Cliff_Tile.png": {
+            "frame": {
+                "x": 83,
+                "y": 1,
+                "w": 48,
+                "h": 96
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 96
+            },
+            "sourceSize": {
+                "w": 48,
+                "h": 96
+            }
+        },
+        "FarmLand_Tile.png": {
+            "frame": {
+                "x": 1,
+                "y": 99,
+                "w": 48,
+                "h": 48
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 48
+            },
+            "sourceSize": {
+                "w": 48,
+                "h": 48
+            }
+        },
+        "Grass_Middle.png": {
+            "frame": {
+                "x": 133,
+                "y": 1,
+                "w": 16,
+                "h": 16
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 16,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 16,
+                "h": 16
+            }
+        },
+        "Path_Middle.png": {
+            "frame": {
+                "x": 133,
+                "y": 19,
+                "w": 16,
+                "h": 16
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 16,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 16,
+                "h": 16
+            }
+        },
+        "Path_Tile.png": {
+            "frame": {
+                "x": 151,
+                "y": 1,
+                "w": 48,
+                "h": 96
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 96
+            },
+            "sourceSize": {
+                "w": 48,
+                "h": 96
+            }
+        },
+        "Water_Middle.png": {
+            "frame": {
+                "x": 51,
+                "y": 99,
+                "w": 16,
+                "h": 16
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 16,
+                "h": 16
+            },
+            "sourceSize": {
+                "w": 16,
+                "h": 16
+            }
+        },
+        "Water_Tile.png": {
+            "frame": {
+                "x": 69,
+                "y": 99,
+                "w": 48,
+                "h": 96
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 48,
+                "h": 96
+            },
+            "sourceSize": {
+                "w": 48,
+                "h": 96
+            }
+        }
+    },
+    "meta": {
+        "app": "https://www.codeandweb.com/texturepacker",
+        "version": "1.0",
+        "image": "spritesheet.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 200,
+            "h": 196
+        },
+        "scale": "1",
+        "comment": "Created with TexturePacker Online (free version)\nhttps://www.codeandweb.com/texturepacker-online\n\nTexturePacker desktop offers better support for Pixi and Phaser with sprite trimming, better packing algorithms, hardware texture compression, and PNG optimization.\nTry TexturePacker desktop: https://www.codeandweb.com/texturepacker"
+    }
+}

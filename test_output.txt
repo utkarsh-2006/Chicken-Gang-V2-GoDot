@@ -1,0 +1,12 @@
+=== TEST 1 & 2 & 3 & 4 & 5 ===
+PASS: world_scene instantiated successfully
+Player spawn count: 3
+Hunter spawn count: 4
+Hiding spot count (generated): 1
+Hiding zone count (original): 24
+Tractor polygon count: 1
+Collision count: 123
+Players spawned in GM: 1
+Hunters spawned in GM: 1
+Player pos: (1749.33, 577.333)
+Hunter pos: (1740.682, 1667.506)

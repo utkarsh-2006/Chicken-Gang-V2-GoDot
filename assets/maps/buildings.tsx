@@ -1,0 +1,1 @@
+<tileset version="1.10" tiledversion="1.12.2" name="buildings" tilewidth="1" tileheight="1" tilecount="0" columns="0" />
