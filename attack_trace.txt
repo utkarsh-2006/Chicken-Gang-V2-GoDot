@@ -1,0 +1,15 @@
+Frame 0 state: 2 anim: attack_right anim_frame: 0
+Frame 1 state: 2 anim: attack_right anim_frame: 0
+Frame 2 state: 2 anim: attack_right anim_frame: 0
+Frame 3 state: 2 anim: attack_right anim_frame: 0
+Frame 4 state: 2 anim: attack_right anim_frame: 0
+Frame 5 state: 2 anim: attack_right anim_frame: 0
+Frame 6 state: 2 anim: attack_right anim_frame: 0
+Frame 7 state: 2 anim: attack_right anim_frame: 1
+Frame 8 state: 2 anim: attack_right anim_frame: 1
+Frame 9 state: 2 anim: attack_right anim_frame: 1
+Frame 10 state: 2 anim: attack_right anim_frame: 1
+Frame 11 state: 2 anim: attack_right anim_frame: 1
+Frame 12 state: 2 anim: attack_right anim_frame: 1
+Frame 13 state: 2 anim: attack_right anim_frame: 1
+Frame 14 state: 2 anim: attack_right anim_frame: 2

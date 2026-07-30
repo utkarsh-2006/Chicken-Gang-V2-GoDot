@@ -1,0 +1,49 @@
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/chicken/chicken.gd:69)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+ERROR: Failed to load script "res://scripts/entities/chicken/chicken.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/collectible/worm.gd:92)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+ERROR: Failed to load script "res://scripts/entities/collectible/worm.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/managers/worm_manager.gd:13)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/managers/game_manager.gd:0)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+ERROR: Failed to load script "res://scripts/managers/game_manager.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/ui/dynamic_camera.gd:17)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+ERROR: Failed to load script "res://scripts/ui/dynamic_camera.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:7)
+SCRIPT ERROR: Invalid call. Nonexistent function '_process' in base 'Window'.
+   at: _init (res://test_startup.gd:18)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_startup.gd:18)
+SCRIPT ERROR: Invalid assignment of property or key 'worm_scene' with value of type 'PackedScene' on a base object of type 'Node'.
+   at: GameManager._ready (res://scripts/managers/game_manager.gd:30)
+   GDScript backtrace (most recent call first):
+       [0] _ready (res://scripts/managers/game_manager.gd:30)
+SCRIPT ERROR: Invalid assignment of property or key 'player_id' with value of type 'String' on a base object of type 'CharacterBody2D'.
+   at: GameManager._on_level_ready (res://scripts/managers/game_manager.gd:63)
+   GDScript backtrace (most recent call first):
+       [0] _on_level_ready (res://scripts/managers/game_manager.gd:63)
+       [1] _run_adapters (res://scripts/managers/level_manager.gd:230)

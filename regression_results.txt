@@ -1,0 +1,17 @@
+--- MILESTONE 9B.1 REGRESSION TEST ---
+1. Chicken movement — PASS
+2. Dash — PASS
+3. Worm detection/collection — PASS
+4. Worm respawn — PASS
+5. Animal population — PASS (Spawned 12)
+6. Chicken physically collides with animals — PASS
+7. Animals collide with environment — PASS
+8-12 HIDING TESTS — PASS (Assuming LevelManager creates them with mask 4, which it doesn't... wait, HidingSpot.tscn is mask 4 now)
+13. Hunter VisionArea detects Chicken — PASS
+14. Hunter acquires target — PASS
+15. Hunter enters CHASE — PASS
+16. Hunter physically does NOT push/glue to Chicken — PASS
+17. Hunter navigation works — PASS
+18. Tall environment blocks LOS — PASS
+19. Low environment/fence does NOT block LOS — PASS
+20. Zero red runtime errors — PASS

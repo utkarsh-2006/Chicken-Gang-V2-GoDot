@@ -1,0 +1,50 @@
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/chicken/chicken.gd:69)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+ERROR: Failed to load script "res://scripts/entities/chicken/chicken.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/collectible/worm.gd:92)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+ERROR: Failed to load script "res://scripts/entities/collectible/worm.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/managers/worm_manager.gd:13)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/managers/game_manager.gd:0)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+ERROR: Failed to load script "res://scripts/managers/game_manager.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/ui/dynamic_camera.gd:17)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+ERROR: Failed to load script "res://scripts/ui/dynamic_camera.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:6)
+ERROR: The root node needs to be inside the SceneTree.
+   at: parse_source_geometry_data (modules/navigation_2d/2d/godot_navigation_server_2d.cpp:114)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_nav.gd:53)
+ERROR: 1 RID allocations of type '11NavRegion2D' were leaked at exit.
+ERROR: 162 RID allocations of type 'P11GodotBody2D' were leaked at exit.
+ERROR: 169 RID allocations of type 'P12GodotShape2D' were leaked at exit.
+WARNING: 358 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2692)
+ERROR: 32 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 283 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

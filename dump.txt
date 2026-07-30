@@ -1,0 +1,515 @@
+ChickenGangMap (Node2D)
+  ground (TileMapLayer)
+  collision (Node2D)
+    StaticBody (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody2 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody3 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody4 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody5 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody6 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody7 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody8 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody9 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody10 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody11 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody12 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody13 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody14 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody15 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody16 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody17 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody18 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody19 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody20 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody21 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody22 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody23 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody24 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody25 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody26 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody27 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody28 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody29 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody30 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody31 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody32 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody33 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody34 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody35 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody36 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody37 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody38 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody39 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody40 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody41 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody42 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody43 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody44 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody45 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody46 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody47 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody48 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody49 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody50 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody51 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody52 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody53 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody54 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody55 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody56 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody57 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody58 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody59 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody60 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody61 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody62 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody63 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody64 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody65 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody66 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody67 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody68 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody69 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody70 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody71 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody72 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody73 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody74 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody75 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody76 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody77 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody78 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody79 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody80 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody81 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody82 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody83 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody84 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody85 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody86 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody87 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody88 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody89 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody90 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody91 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody92 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody93 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody94 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody95 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody96 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody97 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody98 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody99 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody100 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody101 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody102 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody103 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody104 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody105 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody106 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody107 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody108 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody109 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody110 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody111 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody112 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody113 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody114 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody115 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody116 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody117 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody118 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody119 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody120 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody121 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody122 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody123 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody124 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody125 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody126 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody127 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody128 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody129 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+  hunter spwans (Node2D)
+    point (Marker2D)
+    point2 (Marker2D)
+    point3 (Marker2D)
+    point4 (Marker2D)
+  hiding zones (Node2D)
+    StaticBody (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody2 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody3 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody4 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody5 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody6 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody7 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody8 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody9 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody10 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody11 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody12 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody13 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody14 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody15 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody16 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody17 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody18 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody19 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody20 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody21 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody22 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody23 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody24 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+  tractor path (Node2D)
+    StaticBody (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Polygon Shape (CollisionPolygon2D)
+  player spawns (Node2D)
+    point (Marker2D)
+    point2 (Marker2D)
+    point3 (Marker2D)
+  worm spawn zones (Node2D)
+    StaticBody (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+  animal spawn zones (Node2D)
+    StaticBody (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody2 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody3 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody4 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody5 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody6 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+    StaticBody7 (StaticBody2D)
+      => StaticBody2D, layer: 1
+      Rectangle Shape (CollisionShape2D)
+  roads (TileMapLayer)
+  cliffs water (TileMapLayer)
+  trees down (TileMapLayer)
+  crops down (TileMapLayer)
+  props down (TileMapLayer)
+  flowers down (TileMapLayer)
+  tall_buildings (Node2D)
+    silo (Sprite2D)
+  buildings (TileMapLayer)
+  crops up (TileMapLayer)
+  flowers up (TileMapLayer)
+  props up (TileMapLayer)
+  trees up (TileMapLayer)

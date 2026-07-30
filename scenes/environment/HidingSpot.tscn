@@ -6,6 +6,7 @@
 size = Vector2(100, 100)
 
 [node name="HidingSpot" type="Area2D"]
+collision_mask = 4
 script = ExtResource("1_hs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

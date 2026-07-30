@@ -1,0 +1,3 @@
+worm spawn zones (Node2D) | pos: (0.0, 0.0) | z: 0
+  StaticBody (StaticBody2D) | pos: (17.9886, 17.9886) | z: 0
+    Rectangle Shape (CollisionShape2D) | pos: (1096.02, 1016.36) | z: 0

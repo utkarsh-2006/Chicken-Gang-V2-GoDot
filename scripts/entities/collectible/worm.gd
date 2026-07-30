@@ -18,10 +18,14 @@ enum WormType {
 var can_collect: bool = true
 var is_active: bool = true
 
+signal map_worm_collected(worm: Worm)
+
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
+	_apply_random_visual_variant()
+	
 	if worm_type == WormType.GOLDEN:
 		value = golden_value
 		if anim:
@@ -37,13 +41,38 @@ func _ready() -> void:
 	if collect_delay > 0.0:
 		can_collect = false
 		modulate.a = 0.5
-		get_tree().create_timer(collect_delay).timeout.connect(func():
-			can_collect = true
-			modulate.a = 1.0
-		)
+		get_tree().create_timer(collect_delay).timeout.connect(_on_collect_delay_finished)
 		
 	if lifespan > 0.0:
 		get_tree().create_timer(lifespan).timeout.connect(queue_free)
+
+func _on_collect_delay_finished() -> void:
+	can_collect = true
+	modulate.a = 1.0
+
+func _apply_random_visual_variant() -> void:
+	if not anim: return
+	
+	var tex = load("res://assets/worm.png")
+	if not tex: return
+	
+	var variant_row = randi() % 4
+	var base_y = variant_row * 34
+	
+	var new_frames = SpriteFrames.new()
+	new_frames.add_animation("idle")
+	new_frames.set_animation_speed("idle", 4.0)
+	new_frames.set_animation_loop("idle", true)
+	
+	var cols = [0, 30, 60, 30]
+	for x in cols:
+		var atlas = AtlasTexture.new()
+		atlas.atlas = tex
+		atlas.region = Rect2(x, base_y, 30, 34)
+		new_frames.add_frame("idle", atlas)
+		
+	anim.sprite_frames = new_frames
+	anim.play("idle")
 
 func _start_floating_tween() -> void:
 	if not anim: return
@@ -80,11 +109,13 @@ func _on_collected_visuals_done() -> void:
 		# It's a dropped worm, destroy it
 		queue_free()
 	else:
-		# It's a permanent map worm, hide and wait to respawn
+		# It's a permanent map worm, let the WormManager reposition and respawn it
 		visible = false
-		get_tree().create_timer(respawn_time).timeout.connect(_respawn)
+		map_worm_collected.emit(self)
 
-func _respawn() -> void:
+func respawn() -> void:
+	_apply_random_visual_variant()
+	
 	is_active = true
 	can_collect = true
 	scale = Vector2.ONE

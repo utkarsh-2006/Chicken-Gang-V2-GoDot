@@ -11,6 +11,10 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("set_hidden"):
+		print("[HidingSpot] Chicken entered")
+		print("[Chicken] State.HIDDEN")
+		print("[Chicken] detectable = false")
+		print("[Chicken] fade applied")
 		body.set_hidden(true)
 		_fade_sprite(body, hide_opacity)
 

@@ -1,0 +1,14 @@
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/chicken/chicken.gd:69)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_hunter.gd:5)
+ERROR: Failed to load script "res://scripts/entities/chicken/chicken.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://test_hunter.gd:5)
+ERROR: NavigationServer navigation map query failed because it was made before first map synchronization.
+	NavigationServer 'map_changed' signal can be used to receive update notifications.
+	NavigationServer 'map_get_iteration_id()' can be used to check if a map has finished its newest iteration.
+   at: get_closest_point (modules/navigation_2d/nav_map_2d.cpp:164)
+   GDScript backtrace (most recent call first):
+       [0] _pick_new_patrol_point (res://scripts/entities/hunter/hunter.gd:132)

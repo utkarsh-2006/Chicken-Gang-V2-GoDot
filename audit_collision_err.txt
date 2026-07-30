@@ -1,0 +1,15 @@
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/chicken/chicken.gd:69)
+ERROR: Failed to load script "res://scripts/entities/chicken/chicken.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+ERROR: 1 RID allocations of type '10NavAgent2D' were leaked at exit.
+ERROR: 2 RID allocations of type 'P11GodotBody2D' were leaked at exit.
+ERROR: 1 RID allocations of type 'P11GodotArea2D' were leaked at exit.
+ERROR: 4 RID allocations of type 'P12GodotShape2D' were leaked at exit.
+WARNING: 9 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2692)
+ERROR: 3 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 79 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

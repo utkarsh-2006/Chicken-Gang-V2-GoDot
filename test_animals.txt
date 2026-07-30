@@ -1,0 +1,57 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+
+--- DETERMINISTIC 10-ANIMAL TEST ---
+
+Config: CALF_BROWN
+Expected frames: res://assets/entities/animals/calf_brown_frames.tres
+Actual frames: res://assets/entities/animals/calf_brown_frames.tres
+Result: PASS
+
+Config: CALF_HOLSTEIN
+Expected frames: res://assets/entities/animals/calf_holstein_frames.tres
+Actual frames: res://assets/entities/animals/calf_holstein_frames.tres
+Result: PASS
+
+Config: CALF_WHITE
+Expected frames: res://assets/entities/animals/calf_white_frames.tres
+Actual frames: res://assets/entities/animals/calf_white_frames.tres
+Result: PASS
+
+Config: COW_BROWN
+Expected frames: res://assets/entities/animals/cow_brown_frames.tres
+Actual frames: res://assets/entities/animals/cow_brown_frames.tres
+Result: PASS
+
+Config: COW_HOLSTEIN
+Expected frames: res://assets/entities/animals/cow_holstein_frames.tres
+Actual frames: res://assets/entities/animals/cow_holstein_frames.tres
+Result: PASS
+
+Config: COW_WHITE
+Expected frames: res://assets/entities/animals/cow_white_frames.tres
+Actual frames: res://assets/entities/animals/cow_white_frames.tres
+Result: PASS
+
+Config: GOAT
+Expected frames: res://assets/entities/animals/goat_frames.tres
+Actual frames: res://assets/entities/animals/goat_frames.tres
+Result: PASS
+
+Config: LAMB
+Expected frames: res://assets/entities/animals/lamb_frames.tres
+Actual frames: res://assets/entities/animals/lamb_frames.tres
+Result: PASS
+
+Config: SHEEP
+Expected frames: res://assets/entities/animals/sheep_frames.tres
+Actual frames: res://assets/entities/animals/sheep_frames.tres
+Result: PASS
+
+Config: CAT_ORANGE
+Expected frames: res://assets/entities/animals/cat_orange_frames.tres
+Actual frames: res://assets/entities/animals/cat_orange_frames.tres
+Result: PASS
+
+--- TEST COMPLETE ---
+

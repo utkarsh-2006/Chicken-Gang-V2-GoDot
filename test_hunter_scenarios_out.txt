@@ -1,0 +1,22 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+
+--- PHASE 12: RUNTIME SCENARIOS ---
+
+SCENARIO A - Open visibility
+LOS result: HIT
+Hunter state: PATROL
+Target FAILED.
+
+SCENARIO B - Chase movement
+Distance moved toward target: 0.0
+
+SCENARIO C - Close range
+Velocity at close range: (0.0, 0.0)
+Hunter stopped correctly.
+
+SCENARIO D - Building LOS
+Target after wall check: NULL
+
+SCENARIO E - Hidden
+State before hide: PATROL

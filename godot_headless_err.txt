@@ -1,0 +1,24 @@
+ERROR: Node not found: "NavigationAgent2D" (relative to "/root/Main/Level/ChickenGangMap/tall_buildings/Hunter").
+   at: get_node (scene/main/node.cpp:1963)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_ready (res://scripts/entities/hunter/hunter.gd:31)
+       [1] _on_level_ready (res://scripts/managers/game_manager.gd:77)
+       [2] _run_adapters (res://scripts/managers/level_manager.gd:230)
+ERROR: Node not found: "NavigationAgent2D" (relative to "/root/Main/Level/ChickenGangMap/tall_buildings/@CharacterBody2D@27").
+   at: get_node (scene/main/node.cpp:1963)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_ready (res://scripts/entities/hunter/hunter.gd:31)
+       [1] _on_level_ready (res://scripts/managers/game_manager.gd:77)
+       [2] _run_adapters (res://scripts/managers/level_manager.gd:230)
+ERROR: Node not found: "NavigationAgent2D" (relative to "/root/Main/Level/ChickenGangMap/tall_buildings/@CharacterBody2D@28").
+   at: get_node (scene/main/node.cpp:1963)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_ready (res://scripts/entities/hunter/hunter.gd:31)
+       [1] _on_level_ready (res://scripts/managers/game_manager.gd:77)
+       [2] _run_adapters (res://scripts/managers/level_manager.gd:230)
+ERROR: Node not found: "NavigationAgent2D" (relative to "/root/Main/Level/ChickenGangMap/tall_buildings/@CharacterBody2D@29").
+   at: get_node (scene/main/node.cpp:1963)
+   GDScript backtrace (most recent call first):
+       [0] @implicit_ready (res://scripts/entities/hunter/hunter.gd:31)
+       [1] _on_level_ready (res://scripts/managers/game_manager.gd:77)
+       [2] _run_adapters (res://scripts/managers/level_manager.gd:230)

@@ -1,0 +1,4 @@
+Chicken initial state: 0
+Chicken state after take_hit: 3
+Chicken stun_timer: 1.5
+Chicken velocity: (100.0, 0.0)

@@ -1,0 +1,125 @@
+ERROR: Cannot open file 'res://assets/maps/ChickenGangMap.tscn'.
+   at: load (scene/resources/resource_format_text.cpp:1430)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:5)
+ERROR: Failed loading resource: res://assets/maps/ChickenGangMap.tscn.
+   at: _load (core/io/resource_loader.cpp:343)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:5)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/chicken/chicken.gd:69)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+ERROR: Failed to load script "res://scripts/entities/chicken/chicken.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/entities/collectible/worm.gd:92)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+ERROR: Failed to load script "res://scripts/entities/collectible/worm.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/managers/worm_manager.gd:13)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+SCRIPT ERROR: Compile Error: Failed to compile depended scripts.
+   at: GDScript::reload (res://scripts/managers/game_manager.gd:0)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+ERROR: Failed to load script "res://scripts/managers/game_manager.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+SCRIPT ERROR: Compile Error: Identifier not found: SignalBus
+   at: GDScript::reload (res://scripts/ui/dynamic_camera.gd:17)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+ERROR: Failed to load script "res://scripts/ui/dynamic_camera.gd" with error "Compilation failed".
+   at: load (modules/gdscript/gdscript.cpp:2907)
+   GDScript backtrace (most recent call first):
+       [0] _init (res://check_map_collision.gd:8)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+SCRIPT ERROR: Invalid access to property or key 'collision_layer' on a base object of type 'TileMapLayer'.
+   at: _check_nodes (res://check_map_collision.gd:27)
+   GDScript backtrace (most recent call first):
+       [0] _check_nodes (res://check_map_collision.gd:27)
+       [1] _check_nodes (res://check_map_collision.gd:30)
+       [2] _init (res://check_map_collision.gd:14)
+ERROR: 155 RID allocations of type 'P11GodotBody2D' were leaked at exit.
+ERROR: 162 RID allocations of type 'P12GodotShape2D' were leaked at exit.
+WARNING: 342 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2692)
+ERROR: 32 RID allocations of type 'PN13RendererDummy14TextureStorage12DummyTextureE' were leaked at exit.
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 276 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)

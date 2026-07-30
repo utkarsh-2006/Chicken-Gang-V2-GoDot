@@ -1,0 +1,166 @@
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: Failed to find valid worm spawn position after 50 attempts.
+   at: push_warning (core/variant/variant_utility.cpp:1034)
+   GDScript backtrace (most recent call first):
+       [0] _get_random_valid_position (res://scripts/managers/worm_manager.gd:111)
+       [1] _spawn_random_worm (res://scripts/managers/worm_manager.gd:37)
+       [2] initialize_spawn_zones (res://scripts/managers/worm_manager.gd:30)
+       [3] _on_worm_spawns_ready (res://scripts/managers/game_manager.gd:75)
+       [4] _run_adapters (res://scripts/managers/level_manager.gd:180)
+WARNING: 7 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2692)
+WARNING: ObjectDB instances leaked at exit (run with --verbose for details).
+   at: cleanup (core/object/object.cpp:2641)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:810)
