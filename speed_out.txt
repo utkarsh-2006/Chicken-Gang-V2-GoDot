@@ -1,0 +1,207 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+LevelManager: Navigation baked with agent_radius 10.0, Map Bounds: (0.0, 0.0) to (2240.0, 2080.0)
+LevelManager: Baked polygons count: 233
+[HunterRuntime] chase=115.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=115.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=115.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=115.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+WORM SPAWN SYSTEM
+Zones discovered: 1
+Target map worms: 20
+Successfully spawned: 20
+Rejected candidates: 18
+Animal zones discovered: 7
+Target population: 12
+Animals successfully spawned: 12
+Rejected spawn candidates: 0
+--- FORCING HUNTER NEAR CHICKEN ---
+[HunterAudit] dist=38.66796875 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=36.7513427734375 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=34.834716796875 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=32.9180908203125 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=31.00146484375 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=29.0848388671875 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=true
+--- FIRST ATTACK SUCCESSFUL ---
+[HunterAudit] dist=33.8626708984375 ar=30.0 pad=24.0 cd=1.48333333333333 lost=0.0 state=1 detectable=true condition=false
+--- ATTACK OVER, WAITING FOR RECOVERY ---
+[HunterAudit] dist=31.946044921875 ar=30.0 pad=24.0 cd=1.46666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=30.0294189453125 ar=30.0 pad=24.0 cd=1.45 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] dist=28.11279296875 ar=30.0 pad=24.0 cd=1.43333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=26.1961669921875 ar=30.0 pad=24.0 cd=1.41666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=24.279541015625 ar=30.0 pad=24.0 cd=1.4 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.38333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.36666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.35 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.33333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.31666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.3 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.28333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.26666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.25 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.23333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.21666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.2 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.18333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.16666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.15 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.13333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.11666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.1 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.08333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.06666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.05 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.03333333333334 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.01666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=1.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.98333333333334 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.96666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.95 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.93333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.91666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.9 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.88333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.86666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.85 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.83333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.81666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.8 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.78333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.76666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.75 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.73333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.71666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.7 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.68333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.66666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.65 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.63333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.61666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.6 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.58333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.56666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.55 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.53333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.51666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.5 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.48333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.46666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.45 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.43333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.41666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.4 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.38333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.36666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.35 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.33333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.31666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.3 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.28333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.26666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.25 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.23333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.21666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.2 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.18333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.16666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.15 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.13333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.11666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.1 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=22.3629150390625 ar=30.0 pad=24.0 cd=0.08333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+--- CHICKEN RECOVERED ---
+[HunterAudit] dist=19.6961669921875 ar=30.0 pad=24.0 cd=0.06666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=15.696044921875 ar=30.0 pad=24.0 cd=0.05 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=13.1126708984375 ar=30.0 pad=24.0 cd=0.03333333333333 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=9.0931396484375 ar=30.0 pad=24.0 cd=0.01666666666667 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=5.8304443359375 ar=30.0 pad=24.0 cd=0.0 lost=0.0 state=1 detectable=true condition=false
+[HunterAudit] BLOCKING CONDITION: cooldown > 0
+[HunterAudit] dist=3.1636962890625 ar=30.0 pad=24.0 cd=-0.01666666666667 lost=0.0 state=1 detectable=true condition=true
+--- CHASE TEST FINISHED, DISTANCE: 183.965240478516 ---
+--- CHICKEN ESCAPED SUCCESSFULLY ---

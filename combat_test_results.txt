@@ -1,0 +1,2 @@
+--- MILESTONE 9B.2 COMBAT TEST ---
+Test A: Stationary

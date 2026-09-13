@@ -1,0 +1,17 @@
+Godot Engine v4.6.2.stable.official.71f334935 - https://godotengine.org
+
+LevelManager: Navigation baked with agent_radius 10.0, Map Bounds: (0.0, 0.0) to (2240.0, 2080.0)
+LevelManager: Baked polygons count: 233
+[HunterRuntime] chase=75.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=75.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=75.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+[HunterRuntime] chase=75.0 ar=30.0 pad=24.0 cd=1.5 grace=1.5
+WORM SPAWN SYSTEM
+Zones discovered: 1
+Target map worms: 20
+Successfully spawned: 20
+Rejected candidates: 26
+Animal zones discovered: 7
+Target population: 12
+Animals successfully spawned: 12
+Rejected spawn candidates: 0
