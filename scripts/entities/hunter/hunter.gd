@@ -10,7 +10,7 @@ enum State {
 
 @export_group("Movement")
 @export var patrol_speed: float = 35.0
-@export var chase_speed: float = 75.0
+@export var chase_speed: float = 175.0
 
 @export_group("Behavior")
 @export var patrol_wait_min: float = 2.0
@@ -45,7 +45,6 @@ var attack_cooldown_timer: float = 0.0
 var has_hit_in_current_attack: bool = false
 
 func _ready() -> void:
-	print("[HunterRuntime] chase=", chase_speed, " ar=", attack_range, " pad=", preferred_attack_distance, " cd=", attack_cooldown, " grace=", lost_target_grace)
 	home_position = global_position
 	target_position = home_position
 	
@@ -190,28 +189,6 @@ func _update_chase(delta: float) -> void:
 	if current_target:
 		var dist = global_position.distance_to(current_target.global_position)
 		
-		# --- INSTRUMENTATION START ---
-		if dist <= 40.0:
-			var detect = false
-			if current_target.has_method("can_be_detected"):
-				detect = current_target.can_be_detected()
-				
-			var condition_met = (lost_target_timer == 0.0 and dist <= attack_range and attack_cooldown_timer <= 0.0)
-			
-			print("[HunterAudit] dist=", dist, " ar=", attack_range, " pad=", preferred_attack_distance, " cd=", attack_cooldown_timer, " lost=", lost_target_timer, " state=", current_state, " detectable=", detect, " condition=", condition_met)
-			
-			if dist <= attack_range and not condition_met:
-				var reasons = []
-				if lost_target_timer > 0.0: reasons.append("lost_target_timer > 0")
-				if attack_cooldown_timer > 0.0: reasons.append("cooldown > 0")
-				print("[HunterAudit] BLOCKING CONDITION: ", ", ".join(reasons))
-				
-			if dist >= 24.0 and dist <= 35.0:
-				if lost_target_timer == 0.0:
-					if dist <= preferred_attack_distance:
-						print("[HunterAudit] VELOCITY ZERO REASON: dist <= pad")
-		# --- INSTRUMENTATION END ---
-		
 		if lost_target_timer == 0.0 and dist <= attack_range and attack_cooldown_timer <= 0.0:
 			current_state = State.ATTACK
 			velocity = Vector2.ZERO
@@ -316,3 +293,4 @@ func _on_anim_finished() -> void:
 			current_state = State.CHASE
 		else:
 			_lose_target()
+
